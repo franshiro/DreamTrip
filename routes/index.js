@@ -1,11 +1,16 @@
 const Routes = require('express').Router()
-const register = require('./register')
-const login  = require('./login')
+const User = require('./user')
 
-Routes.use('/login', login)
-Routes.use('/register', register)
 
 Routes.get('/', (req, res) => {
     res.render('login')
 })
+
+Routes.use('/homepage', User)
+
+
+
+
+
+
 module.exports = Routes
