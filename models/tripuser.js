@@ -6,7 +6,17 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING
   }, {});
   TripUser.associate = function(models) {
-    // associations can be defined here
+    
+    TripUser.belongsTo(models.User, {
+      foreignKey : 'user_id',
+      as: 'TripUserToUser'
+    })
+
+    TripUser.belongsTo(models.Trip, {
+      foreignKey : 'user_id',
+      as: 'TripUserToTrip'
+    })
+
   };
   return TripUser;
 };

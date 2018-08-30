@@ -1,12 +1,11 @@
 const Routes = require('express').Router()
-const User = require('./user')
-const controller = require('../controller')
+const trip =  require('./trip.js')
 
+Routes.use('/trip',trip)
 
-Routes.get('/', controller.Trip.list)
-
-
-
+Routes.get('/',(req,res)=>{
+    res.redirect('/trip')
+})
 
 
 
