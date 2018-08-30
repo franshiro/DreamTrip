@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Trip</title>
+</head>
+<body>
+    <h1>Hi, <%= getId.name %> , yuk buat Trip kamu sendiri</h1>
+    <form action="/trip/<%= getId.id %>/add" method="POST">
+        <input type="text" name = "title" placeholder="Apa tema perjalanan kamu ?"><br>
+        <input type="text" name = "location" placeholder="Kemana tujuan kamu ?"><br>
+        <input type="date" name = "date"><br>
+        <input type="text" name = "meet_point" placeholder="Meeting Point"><br>
+        <input type="text" name = "cost" placeholder="Perkiraan biaya"><br>
+        <input type="number" name = "max" placeholder="Maksimal peserta"><br>
+        <input type="submit" name = "submit" value ="Go!"><br>
+    </form>
+</body>
+</html>

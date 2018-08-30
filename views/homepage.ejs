@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome To Your Dream Trip</h1>
+    <h1>Hi <%= showUsers.name %>,  Welcome To Your Dream Trip</h1>
+
+    <button><a href="/trip/<%= showUsers.id %>/add">buat trip</a></button>
+
+    <table>
+        <% showTrips.forEach(list => { %>
+        <tr>
+            <td><%= list.title %></td>
+            <td><%= list.location %></td>
+            <td><%= list.date %></td>
+            <td><%= list.meet_point %></td>
+            <td><%= list.cost %></td>
+            <td><%= list.max %></td>
+
+        </tr>
+        <% }) %>
+    </table>
+
 </body>
 </html>

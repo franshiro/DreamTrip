@@ -1,17 +1,12 @@
 const Routes = require('express').Router()
-const User = require('./user')
-const Trip = require('./trip')
 const Controller = require('../controller/controller')
 
-Routes.use('/trip', Trip)
-Routes.use('/user', User)
-
-
 Routes.get('/', (req, res) => {
-    res.render('homepage')
+    res.send('route ini siap digunakan')
 })
 
-
+Routes.get('/:id/add', Controller.tripGetId)
+Routes.post('/:id/add', Controller.tripCreate)
 
 
 module.exports = Routes

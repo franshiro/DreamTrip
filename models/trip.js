@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Trip.associate = function(models) {
     // associations can be defined here
-  };
+    Trip.belongsToMany(models.User, { through : 'tripuser' } )
+  }; 
   return Trip;
 };
