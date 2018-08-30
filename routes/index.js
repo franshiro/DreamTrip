@@ -1,12 +1,9 @@
 const Routes = require('express').Router()
 const User = require('./user')
+const controller = require('../controller')
 
 
-Routes.get('/', (req, res) => {
-    res.render('login')
-})
-
-Routes.use('/homepage', User)
+Routes.get('/', controller.Trip.list)
 
 
 
