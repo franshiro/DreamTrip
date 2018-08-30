@@ -6,7 +6,7 @@ class Controller {
     static createUser(req, res){
         User.create(req.body)
         .then(() => {
-            res.redirect('/')
+            res.redirect('/login')
         })
         .catch(err=>{
             res.send(err)
@@ -20,7 +20,14 @@ class Controller {
             }
         })
         .then(showUsers => {
-            res.render('homepage', {showUsers})
+            // res.render('homepage', {showUsers})
+            Trip.findAll({
+                where : { user_id : showUsers.id}
+            })
+            .then(showTrips => {
+                res.render('homepage', {showUsers, showTrips})
+            })
+
         })
         .catch(err => {
             res.send(err)
@@ -47,19 +54,40 @@ class Controller {
             user_id : req.params.id
         })
         .then(() => {
-            // res.render('homepage', {getId : req.params.id})
-            User.findById(req.params.id)
-            .then(showUsers => {
-                // res.render('homepage', {showUsers})
-                Trip.findAll()
-                .then(showTrips => {
-                    res.render('homepage', {showUsers, showTrips})
-                })
-            })
+            res.redirect('/login')
         })
         .catch(err => {
             res.send(err)
         })
+    }
+    static userTripDelete(req, res){
+        Trip.destroy({
+            where : { id : req.params.id}
+        })
+        .then(() => {
+           res.redirect('/login')
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+    static tripEditGetId(req,res) {
+        Trip.findById(req.params.id)
+        .then(getId => {
+            res.render('tripEdit', {getId})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+    static tripUpdatebyId(req, res){
+        Trip.update(req.body, {
+            where : {id : req.params.id}
+        })
+        .then(() => {
+            res.redirect('/login')
+        })
+        .catch(err => res.send(err))
     }
 }
 

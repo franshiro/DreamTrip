@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Trip</title>
+    <title>DreamTrip</title>
+    <link rel="stylesheet" href="/styles/dreamtrip.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans|Old+Standard+TT" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
 </head>
 <body>
-    <h1>Hi, <%= getId.name %> , yuk buat Trip kamu sendiri</h1>
-    <form action="/trip/<%= getId.id %>/add" method="POST">
-        <input type="text" name = "title" placeholder="Apa tema perjalanan kamu ?"><br>
-        <input type="text" name = "location" placeholder="Kemana tujuan kamu ?"><br>
-        <input type="date" name = "date"><br>
-        <input type="text" name = "meet_point" placeholder="Meeting Point"><br>
-        <input type="text" name = "cost" placeholder="Perkiraan biaya"><br>
-        <input type="number" name = "max" placeholder="Maksimal peserta"><br>
-        <input type="submit" name = "submit" value ="Go!"><br>
-    </form>
+    <div id="content">
+
+        
+        <aside>
+            <h1><%= getId.name %></h1>
+            <div class="asideForm">
+                <hr>
+                <h2>CREATE NEW TRIP</h2>
+
+                <form action="/trip/<%= getId.id %>/add" method="POST">
+                    <input type="text" name="title" placeholder="Trip Title">
+                    <input type="text" name="location" placeholder="Location">
+                    <input onfocus="(this.type='date')" name="date" placeholder="Date" max="2019-12-31" min="2018-07-31">
+                    <input type="text" name="meet_point" placeholder="Meet Point">
+                    <input type="number" name="cost" min="0" max="99999999" step="any" placeholder="Sharing Cost">
+                    <input type="number" name="max" min="2" max="200" placeholder="Max Quota">
+                    <div>
+                        <button type="submit" class="newTripBtn">CREATE TRIP</button>
+                    </div>
+                </form>
+                
+            </div>
+        </aside>
+
+        
+
+        <section></section>
+        <footer></footer>
+
+    </div>
+    
 </body>
 </html>
