@@ -1,13 +1,11 @@
 const Routes = require('express').Router()
-const Controller  = require('../controller/controller')
+const Controller  = require('../controller/user')
+const auth = require('../helper/authentication')
 
-Routes.get('/', (req, res) => {
-    res.send('route ini siap digunakan')
-})
 
-Routes.get('/register', (req, res) => {
-    res.render('register')
-})
-Routes.post('/register', Controller.createUser)
+Routes.get('/',auth, Controller.userList)
+
+
+
 
 module.exports = Routes

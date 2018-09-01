@@ -10,8 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     user_id: DataTypes.STRING
   }, {});
   Trip.associate = function(models) {
-    // associations can be defined here
-    Trip.belongsToMany(models.User, { through : 'tripuser' } )
-  }; 
+    Trip.hasMany(models.TripUser, { foreignKey : 'user_id'})
+    
+    Trip.belongsToMany(models.User, {
+      through: 'TripUser',
+      foreignKey : 'user_id'
+    })
+
+  };
   return Trip;
 };
